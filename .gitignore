@@ -115,4 +115,7 @@ venv
 .vscode
 .DS_Store
 
+# config 
+.ini
+
 # End of https://www.gitignore.io/api/python

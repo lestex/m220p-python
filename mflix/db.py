@@ -417,6 +417,7 @@ def add_user(name, email, hashedpw):
         new_user = {"name": name, "email": email, "password": hashedpw}
         # TODO: Durable Writes
         # Use a more durable Write Concern for this operation.
+        db.users.with_options(write_concern=WriteConcern(w=2))
         db.users.insert_one(new_user)
         return {"success": True}
     except DuplicateKeyError:

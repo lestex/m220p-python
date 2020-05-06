@@ -2,9 +2,11 @@ import pytest
 from mflix.db import delete_user, get_user_session, get_user, add_user, \
     login_user, logout_user
 
+user_email = 'magicz@cats.com'
+
 test_user = {
     'name': 'Magical Mr. Mistoffelees',
-    'email': 'magicz@cats.com',
+    'email': user_email,
     'password': 'somehashedpw',
     'jwt': 'someneatjwt'
 }
@@ -12,7 +14,7 @@ test_user = {
 
 @pytest.mark.user_management
 def test_registration(client):
-    delete_user('magicz@cats.com')
+    delete_user(user_email)
     # the password will be hashed at the api layer
     # NEVER
     # NEVER

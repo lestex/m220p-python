@@ -143,7 +143,7 @@ def api_search_movies_faceted():
 
         response = {
             "movies": movies.get('movies'),
-            "facets":  {
+            "facets": {
                 "runtime": movies.get('runtime'),
                 "rating": movies.get('rating')
             },

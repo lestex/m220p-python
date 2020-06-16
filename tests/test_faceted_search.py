@@ -21,7 +21,6 @@ def test_faceted_search_should_return_rating_and_runtime_buckets(client):
     assert result[1] == 37
 
 
-
 @pytest.mark.faceted_search
 def test_faceted_search_should_also_support_paging(client):
     filter = {'cast': ['Susan Sarandon'], }

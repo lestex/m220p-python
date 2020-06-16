@@ -165,9 +165,9 @@ def get_movies_faceted(filters, page, movies_per_page):
 
     try:
         movies = list(db.movies.aggregate(pipeline, allowDiskUse=True))[0]
-        count = list(db.movies.aggregate(
-                        counting, allowDiskUse=True
-                    ))[0].get("count")
+        count = list(
+            db.movies.aggregate(counting, allowDiskUse=True)
+        )[0].get("count")
         return (movies, count)
     except OperationFailure:
         raise OperationFailure(
@@ -298,7 +298,7 @@ def get_movie(id):
 
     # TODO: Error Handling
     # If an invalid ID is passed to `get_movie`, it should return None.
-    except (StopIteration) as _:
+    except StopIteration:
 
         """
         Ticket: Error Handling
@@ -310,7 +310,7 @@ def get_movie(id):
 
         return None
 
-    except Exception as e:
+    except Exception:
         return {}
 
 

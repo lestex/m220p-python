@@ -41,10 +41,16 @@ jobs:
       run: |
         docker-compose up -d
 
+    - name: Find mongo container id
+      run: |
+        # find mongo container id
+        docker cp data `docker ps -q`:/import
+
     - name: Restore mongo database
-      run: docker cp data `docker ps -q`:/data
-        #docker exec -it `docker ps -q` mongorestore --drop --gzip data/data/
+      run: |
+        # restore test database
+        docker-compose  exec -T mongodb  mongorestore --drop --gzip import/data
 
     - name: Test with pytest
       run: |
-        pytest
+        pytest -v

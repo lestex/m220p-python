@@ -11,4 +11,4 @@ import pytest
 @pytest.mark.errors
 def test_no_error(client):
     response = get_movie("foobar")
-    assert response is None
+    assert response == {}

@@ -42,9 +42,8 @@ jobs:
         docker-compose up -d
 
     - name: Restore mongo database
-      run: |
-        docker cp data `docker ps -q`:/data
-        docker exec -it `docker ps -q` mongorestore --drop --gzip data/data/
+      run: docker cp data `docker ps -q`:/data
+        #docker exec -it `docker ps -q` mongorestore --drop --gzip data/data/
 
     - name: Test with pytest
       run: |

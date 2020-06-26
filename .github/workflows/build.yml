@@ -40,7 +40,10 @@ jobs:
     - name: Run docker compose
       run: |
         docker-compose -v
+        
+    - name: Start mongoDB
+      run: docker-compose up -d
 
-    # - name: Test with pytest
-    #   run: |
-    #     pytest
+    - name: Test with pytest
+      run: |
+        pytest

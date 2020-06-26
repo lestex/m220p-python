@@ -37,12 +37,14 @@ jobs:
         # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     
-    - name: Run docker compose
-      run: |
-        docker-compose -v
-        
     - name: Start mongoDB
-      run: docker-compose up -d
+      run: |
+        docker-compose up -d
+
+    - name: Restore mongo database
+      run: |
+        docker cp data `docker ps -q`:/data
+        docker exec -it `docker ps -q` mongorestore --drop --gzip data/data/
 
     - name: Test with pytest
       run: |

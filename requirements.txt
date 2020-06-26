@@ -61,6 +61,7 @@ pymongo
 pyparsing==2.4.7
 pyrsistent==0.15.4
 pytest>=5.2
+pytest-cov==2.10.0
 pytest-flask==1.0.0
 python-dateutil==2.8.0
 pyzmq==18.1.0

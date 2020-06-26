@@ -1,4 +1,4 @@
-name: Mflix
+name: CI
 
 on:
   pull_request:
@@ -57,3 +57,14 @@ jobs:
     - name: Test with pytest
       run: |
         pytest -v
+
+    - name: Generate test report
+      run: |
+        pytest --cov-report=xml
+
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v1
+
+    - name: Check Coverage
+      run: |
+        coverage report --fail-under=100 || (echo 'Insufficient coverage' && $(exit 1))

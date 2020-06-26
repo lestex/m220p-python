@@ -67,4 +67,4 @@ jobs:
 
     - name: Check Coverage
       run: |
-        coverage report --fail-under=100 || (echo 'Insufficient coverage' && $(exit 1))
+        coverage report --fail-under=40 || (echo 'Insufficient coverage' && $(exit 1))

@@ -5,3 +5,12 @@ services:
     image: mongo:4.2
     ports:
       - 27017:27017
+
+  mongo_seed:
+    image: mongo:4.2
+    links:
+      - mongodb
+    volumes:
+      - ./data:/data
+    command:
+      /data/import.sh

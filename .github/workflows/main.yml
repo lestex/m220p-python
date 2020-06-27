@@ -58,14 +58,14 @@ jobs:
     #     echo extracted issue: ${GITHUB_HEAD_REF} | egrep -o 'GA-[0-9]{1,4}'
 
 
-    # - name: Generate test report
-    #   run: |
-    #     pytest --cov-report=xml
+    - name: Generate test report
+      run: |
+        codecov
 
-    # - name: Upload coverage to Codecov
-    #   uses: codecov/codecov-action@v1
-    #   with:
-    #     token: ${{ secrets.CODECOV_TOKEN }}
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v1
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
 
     # - name: Check Coverage
     #   run: |

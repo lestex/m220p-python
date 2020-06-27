@@ -49,24 +49,6 @@ jobs:
       run: |
         pytest -v
 
-    # - name: Find Issue
-    #   id: find_issue
-    #   shell: bash
-    #   run: |
-    #     echo "::set-output name=ISSUE_ID::$(echo ${GITHUB_HEAD_REF} | egrep -o 'GA-[0-9]{1,4}')"
-    #     echo brach name: $GITHUB_HEAD_REF
-    #     echo extracted issue: ${GITHUB_HEAD_REF} | egrep -o 'GA-[0-9]{1,4}'
-
-
     - name: Generate test report
       run: |
-        codecov
-
-    - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v1
-      with:
-        token: ${{ secrets.CODECOV_TOKEN }}
-
-    # - name: Check Coverage
-    #   run: |
-    #     coverage report --fail-under=40 --omit '.venv/*' || (echo 'Insufficient coverage' && $(exit 1))
+        codecov -t ${{ secrets.CODECOV_TOKEN }}

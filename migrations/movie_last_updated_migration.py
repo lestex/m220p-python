@@ -47,7 +47,7 @@ for doc in cursor:
         }
     )
 
-print(f"{len(movies_to_migrate)} documents to migrate")
+print('{} documents to migrate.'.format(len(movies_to_migrate)))
 
 try:
     # TODO: Complete the UpdateOne statement below

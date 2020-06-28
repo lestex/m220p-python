@@ -1,13 +1,9 @@
 name: JIRA
 
-# on:
-#   pull_request:
-#     branches:
-#       - '*'
-
 on:
   pull_request:
-    types: [closed]
+    branches:
+      - '*'
 
 jobs:
   build:
@@ -25,9 +21,9 @@ jobs:
         id: find_issue
         shell: bash
         run: |
-          echo "::set-output name=ISSUE_ID::$(echo ${GITHUB_HEAD_REF} | egrep -o 'GA-[0-9]{1,4}')"
+          echo "::set-output name=ISSUE_ID::$(echo ${GITHUB_HEAD_REF} | egrep -o 'GD-[0-9]{1,4}')"
           echo brach name: $GITHUB_HEAD_REF
-          echo extracted issue: ${GITHUB_HEAD_REF} | egrep -o 'GA-[0-9]{1,4}'
+          echo extracted issue: ${GITHUB_HEAD_REF} | egrep -o 'GD-[0-9]{1,4}'
 
       - name: Check Issue
         shell: bash
@@ -43,4 +39,4 @@ jobs:
         uses: atlassian/gajira-transition@master
         with:
           issue: ${{ steps.find_issue.outputs.ISSUE_ID }}
-          transition: "Done"
+          transition: "Peer review"

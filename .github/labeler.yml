@@ -6,11 +6,11 @@ theme:build:
     - "Dockerfile"
     - "docker-compose.yml"
   
-  theme:code:
-    - "*.py"
-  
-  theme:tests:
-    - "tests/**"
-  
-  theme:documentation:
-    - "docs/**"
+theme:code:
+  - "*.py"
+
+theme:tests:
+  - "tests/**"
+
+theme:documentation:
+  - "docs/**"

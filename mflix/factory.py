@@ -11,6 +11,7 @@ from datetime import datetime, timedelta
 
 from mflix.api.movies import movies_api_v1
 from mflix.api.user import user_api_v1
+from mflix.settings import ProdConfig
 
 
 class MongoJsonEncoder(JSONEncoder):
@@ -22,7 +23,7 @@ class MongoJsonEncoder(JSONEncoder):
         return json_util.default(obj, json_util.CANONICAL_JSON_OPTIONS)
 
 
-def create_app():
+def create_app(config_object=ProdConfig):
 
     APP_DIR = os.path.abspath(os.path.dirname(__file__))
     STATIC_FOLDER = os.path.join(APP_DIR, 'build/static')
@@ -43,6 +44,7 @@ def create_app():
             'user': identity,
         }
 
+    app.config.from_object(config_object)
     app.config['JWT'] = jwt
     app.config['BCRYPT'] = Bcrypt(app)
     app.config['CLAIMS_LOADER'] = add_claims

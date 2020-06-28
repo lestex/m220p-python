@@ -1,18 +1,7 @@
 from mflix.factory import create_app
+from flask.helpers import get_debug_flag
+from mflix.settings import DevConfig, ProdConfig
 
-import os
-import configparser
+CONFIG = DevConfig if get_debug_flag() else ProdConfig
 
-
-config = configparser.ConfigParser()
-config.read(os.path.abspath(os.path.join(".ini")))
-
-app = create_app()
-
-if __name__ == "__main__":
-    app.config['DEBUG'] = True
-    app.config['MFLIX_DB_URI'] = config['PROD']['MFLIX_DB_URI']
-    app.config['MFLIX_NS'] = config['PROD']['MFLIX_NS']
-    app.config['SECRET_KEY'] = config['PROD']['SECRET_KEY']
-
-    app.run()
+app = create_app(CONFIG)

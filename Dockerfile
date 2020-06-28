@@ -10,7 +10,7 @@ RUN pip install --no-cache-dir --user \
 
 EXPOSE 5000
 
-COPY run.py .ini /app/
+COPY run.py /app/
 COPY mflix /app/mflix
 
 ENV PATH=/root/.local/bin:$PATH

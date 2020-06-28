@@ -1,4 +1,4 @@
-name: JIRA
+name: jira-done
 
 on:
   pull_request:

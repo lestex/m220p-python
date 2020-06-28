@@ -47,7 +47,11 @@ jobs:
 
     - name: Test with pytest
       run: |
-        pytest --cov-report=xml --cov
+        pytest -v -s
+
+    - name: Generate coverage report
+      run: |
+        coverage xml --omit='.venv/*'
 
     - name: Upload Test Coverage report
       uses: codecov/codecov-action@v1

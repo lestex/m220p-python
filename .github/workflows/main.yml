@@ -43,7 +43,7 @@ jobs:
         docker-compose  exec -T mongodb  mongorestore --drop --gzip import/data
 
     - name: Run migrations
-      run: python migrations/movie_last_updated_migration.py
+      run: FLASK_APP=run.py flask migrate
 
     - name: Test with pytest
       run: |

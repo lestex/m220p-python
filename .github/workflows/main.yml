@@ -1,4 +1,4 @@
-name: Mflix
+name: CI
 
 on:
   pull_request:
@@ -7,7 +7,6 @@ on:
   push:
     branches:
       - 'master'
-  
 
 jobs:
   build:
@@ -15,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.7, 3.8]
+        python-version: [3.6, 3.7, 3.8]
 
     steps:
     - uses: actions/checkout@v2
@@ -26,16 +25,8 @@ jobs:
 
     - name: Install dependencies
       run: |
-        python -m pip install --upgrade pip
-        pip install flake8 pytest
-        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-
-    - name: Lint with flake8
-      run: |
-        # stop the build if there are Python syntax errors or undefined names
-        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
-        # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
-        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+        python -m pip install --upgrade pip setuptools wheel
+        if [ -f requirements/test.txt ]; then pip install -r requirements/test.txt; fi
     
     - name: Start mongoDB
       run: |
@@ -56,4 +47,9 @@ jobs:
 
     - name: Test with pytest
       run: |
-        pytest -v
+        pytest --cov-report=xml --cov=mflix
+
+    - name: Upload Test Coverage report
+      uses: codecov/codecov-action@v1
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}

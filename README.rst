@@ -1,6 +1,8 @@
 =====
 mflix
 =====
+![Mflix](https://github.com/lestex/M220P-mongo-python/workflows/Mflix/badge.svg)
+![Lint](https://github.com/lestex/M220P-mongo-python/workflows/Lint/badge.svg?branch=master)
 
 This is a short guide on setting up the system and environment dependencies
 required for the MFlix application to run.

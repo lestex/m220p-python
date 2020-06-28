@@ -1,13 +1,13 @@
 name: JIRA
 
-# on:
-#   pull_request:
-#     branches:
-#       - '*'
-
 on:
   pull_request:
-    types: [closed]
+    branches:
+      - '*'
+
+# on:
+#   pull_request:
+#     types: [closed]
 
 jobs:
   build:

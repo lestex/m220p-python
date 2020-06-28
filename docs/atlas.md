@@ -132,7 +132,7 @@ as well.
 The `mongorestore` command necessary to import the data is located below. Copy
 and paste the command, and replace `<your-atlas-uri>` with your Atlas SRV string:
 
-````sh
+```sh
 
   # navigate to mflix-python directory
   cd mflix-python

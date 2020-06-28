@@ -25,9 +25,9 @@ jobs:
         id: find_issue
         shell: bash
         run: |
-          echo "::set-output name=ISSUE_ID::$(echo ${GITHUB_HEAD_REF} | egrep -o 'GA-[0-9]{1,4}')"
+          echo "::set-output name=ISSUE_ID::$(echo ${GITHUB_HEAD_REF} | egrep -o 'GD-[0-9]{1,4}')"
           echo brach name: $GITHUB_HEAD_REF
-          echo extracted issue: ${GITHUB_HEAD_REF} | egrep -o 'GA-[0-9]{1,4}'
+          echo extracted issue: ${GITHUB_HEAD_REF} | egrep -o 'GD-[0-9]{1,4}'
 
       - name: Check Issue
         shell: bash

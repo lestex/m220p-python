@@ -1,9 +1,6 @@
 name: "Create draft release"
 
 on:
-  pull_request:
-      branches:
-          - '*'
   push:
     branches:
       - master

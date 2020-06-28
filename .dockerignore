@@ -1,0 +1,10 @@
+data
+.git
+.DS_Store
+__pycache__
+.cache
+.pytest_cache
+.venv
+notebooks
+.coverage
+.vscode

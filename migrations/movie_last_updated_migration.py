@@ -2,8 +2,8 @@ from pymongo import MongoClient, UpdateOne
 from pymongo.errors import InvalidOperation
 from bson import ObjectId
 import dateutil.parser as parser
-import os
-import configparser
+
+from mflix.settings import DevConfig
 
 """
 Ticket: Migration
@@ -15,14 +15,11 @@ The parser.parse() method can transform date strings into ISODate objects for
 us. We just need to make sure the correct operations are sent to MongoDB!
 """
 
-config = configparser.ConfigParser()
-config.read(os.path.abspath(os.path.join(".ini")))
-
 # ensure you update your host information below!
-host = config['TEST']['MFLIX_DB_URI']
+host = DevConfig.MFLIX_DB_URI
 
 # don't update this information
-MFLIX_DB_NAME = config['PROD']['MFLIX_NS']
+MFLIX_DB_NAME = DevConfig.MFLIX_NS
 mflix = MongoClient(host)[MFLIX_DB_NAME]
 
 # TODO: Create the proper predicate and projection

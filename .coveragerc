@@ -1,7 +1,11 @@
 [run]
-branch = True
+
 
 [report]
+omit =
+    /*/.venv/*
+    /*/tests/*.py
+
 # Regexes for lines to exclude from consideration
 exclude_lines =
     # Have to re-enable the standard pragma
@@ -20,6 +24,11 @@ exclude_lines =
     if __name__ == .__main__.:
 
 ignore_errors = True
+
+[paths]
+source =
+    mflix/
+    run.py
 
 [html]
 directory = coverage_html

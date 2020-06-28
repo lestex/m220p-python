@@ -55,6 +55,8 @@ and can be installed with the following command:
 
 It is recommended to connect **mflix** with MongoDB Atlas, so you do not need to
 have a MongoDB server running on your host machine.
+Refer to [setup Atlas domentation](/docs/atlas.md).
+
 But there is `docker-compose` file to set mongodb locally:
 
 ```sh

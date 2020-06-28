@@ -4,12 +4,10 @@ categories:
   - title: ' New Features'
     labels:
       - 'type:features'
-# в эту категорию собираем все PR с меткой type:features
 
   - title: ' Bugs Fixes'
     labels:
       - 'type:fix'
-# аналогично для метки type:fix и т.д.
 
   - title: ' Documentation'
     labels:

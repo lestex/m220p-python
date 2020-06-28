@@ -12,6 +12,7 @@ from datetime import datetime, timedelta
 from mflix.api.movies import movies_api_v1
 from mflix.api.user import user_api_v1
 from mflix.settings import ProdConfig
+from mflix import commands
 
 
 class MongoJsonEncoder(JSONEncoder):
@@ -50,9 +51,16 @@ def create_app(config_object=ProdConfig):
     app.config['CLAIMS_LOADER'] = add_claims
     app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(days=30)
 
+    register_commands(app)
+
     @app.route('/', defaults={'path': ''})
     @app.route('/<path:path>')
     def serve(path):
         return render_template('index.html')
 
     return app
+
+
+def register_commands(app):
+    """Register Click commands."""
+    app.cli.add_command(commands.migrate)

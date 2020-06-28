@@ -16,8 +16,7 @@ jobs:
     - name: set global env
       id: global_env
       run: |
-        echo "::set-output name=IMAGE_NAME::mflix"
-        echo "::set-output name=DOCKERHUB_IMAGE_NAME::lestex/mflix"
+        echo "::set-output name=DOCKERHUB_IMAGE_NAME::lestex/mflix-python"
 
     - name: Build and tag image
       run: |
@@ -31,5 +30,5 @@ jobs:
 
     - name: Push image
       run: |
-        docker push lestex/mflix:${GITHUB_SHA::8}
-        docker push lestex/mflix:latest
+        docker push ${{ steps.global_env.outputs.DOCKERHUB_IMAGE_NAME }}:${GITHUB_SHA::8}
+        docker push ${{ steps.global_env.outputs.DOCKERHUB_IMAGE_NAME }}:latest

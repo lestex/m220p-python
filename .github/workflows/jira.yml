@@ -43,4 +43,4 @@ jobs:
         uses: atlassian/gajira-transition@master
         with:
           issue: ${{ steps.find_issue.outputs.ISSUE_ID }}
-          transition: "Done"
+          transition: "Peer review"

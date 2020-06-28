@@ -1,4 +1,4 @@
-name: JIRA
+name: jira-pr
 
 on:
   pull_request:

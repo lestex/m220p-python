@@ -1,0 +1,16 @@
+theme:build:
+    - ".github/**"
+    - "pom.xml"
+    - ".travis.yml"
+    - ".gitignore"
+    - "Dockerfile"
+    - "docker-compose.yml"
+  
+  theme:code:
+    - "*.py"
+  
+  theme:tests:
+    - "tests/**"
+  
+  theme:documentation:
+    - "docs/**"

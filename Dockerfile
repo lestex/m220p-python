@@ -6,7 +6,7 @@ RUN apk --no-cache add --virtual builds-deps \
 
 COPY requirements /requirements
 RUN pip install --no-cache-dir --user \
-    -r /requirements/prod.txt
+    -r /requirements/prod.txt --no-warn-script-location
 
 EXPOSE 5000
 

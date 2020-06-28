@@ -20,10 +20,11 @@ stop:
 	docker stop $(CONTAINER_NAME)
 
 rmi:
-	docker ps -a | grep '$(CONTAINER_NAME)' | awk '{print $$1}' | xargs docker rm \
-	docker images | grep '$(IMAGE_NAME)' | awk '{print $$3}' | xargs docker rmi
+	@docker ps -a | grep '$(CONTAINER_NAME)' | awk '{print $$1}' | xargs docker rm \
+	@docker images | grep '$(IMAGE_NAME)' | awk '{print $$3}' | xargs docker rmi \
+	@docker rmi -f $$(docker images -f "dangling=true" -q)
 
-clean:
+clean: rmi
 	rm -rf .venv
 
 setup_env:
@@ -42,7 +43,7 @@ install-test: venv
 	pip install -r requirements/test.txt
 
 flake:
-	flake8 . --count --show-source --statistics
+	flake8 . --count --show-source --statistics \
     flake8 . --count --exit-zero --max-complexity=10
 
 lint: flake
